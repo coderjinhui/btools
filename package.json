@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/coderjinhui/btools#readme",
   "dependencies": {
+    "commander": "^6.2.0",
     "lodash.template": "^4.5.0",
     "yargs": "^16.1.0"
   },
