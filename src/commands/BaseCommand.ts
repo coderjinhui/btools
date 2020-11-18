@@ -1,8 +1,11 @@
-
+export interface Options {
+    command: string;
+    description: string;
+}
 export interface BaseCommand {
     command: string;
     alias?: string | string[];
     description?: string;
-    optionDescription?: {[option: string]: string};
+    optionDescription?: Options[]
     handler: (...args: any[]) => void | Promise<void>;
 }
