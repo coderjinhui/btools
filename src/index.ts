@@ -1,1 +1,4 @@
-console.log(111)
+#!/usr/bin/env node
+import { CommandManager } from "./commands";
+
+CommandManager.init();
