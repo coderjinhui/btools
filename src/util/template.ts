@@ -18,7 +18,6 @@ export class FileSystem {
         }
 
         for (const folder of needCreate) {
-            console.log(needCreate)
             fs.mkdirSync(folder);
         }
     }
