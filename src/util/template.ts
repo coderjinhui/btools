@@ -7,9 +7,6 @@ const template_folder = path.join(__dirname, '../templates');
 
 export class FileSystem {
     static mkdir(dir: string, needCreate?: string[]) {
-        if (fs.existsSync(dir)) {
-            return;
-        }
         if (!needCreate) {
             needCreate = [];
         }
@@ -21,6 +18,7 @@ export class FileSystem {
         }
 
         for (const folder of needCreate) {
+            console.log(needCreate)
             fs.mkdirSync(folder);
         }
     }
@@ -36,7 +34,3 @@ export class Template {
         fs.writeFileSync(path.join(folder, fileName), compiled)
     }
 }
-
-Template.copy('package.default.json', 'dist/', {
-    name: 'test111'
-})

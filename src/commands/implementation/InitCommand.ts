@@ -3,6 +3,7 @@ import inquirer from 'inquirer';
 import { CommandType } from '../types/CommandType';
 import path from 'path';
 import fs from 'fs';
+import { FileSystem } from '../../util/template';
 
 
 // const InitCommand = program.command('init <operation> [filepath]')
@@ -50,15 +51,29 @@ export default class InitCommand implements BaseCommand {
         return answer;
     }
 
-    handler(filepath, args) {
+    async handler(filepath, args) {
         if (!filepath) {
             filepath = './';
         }
         const fullPath = path.join(process.cwd(), filepath);
-        this.askCustomize().then(res => {
-            console.log(res)
-        })
-        // console.log('init', filepath)
+        // target folder not exist, create the folder
+        if (!fs.existsSync(fullPath)) {
+            console.log(fullPath, "create")
+            FileSystem.mkdir(fullPath);
+        }
+        // target folder exist, check it is empty
+        const files = fs.readdirSync(fullPath);
+        // if not empty, reject the init process
+        if (files.length) {
+            console.log("Target folder is not empty!");
+            return;
+        }
+
+        const isDefault = await this.askDefault();
+        console.log(isDefault);
+
+        // create the folders
+        // copy template files
         
     }
 }
