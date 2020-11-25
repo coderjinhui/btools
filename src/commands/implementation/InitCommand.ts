@@ -70,7 +70,10 @@ export default class InitCommand implements BaseCommand {
         }
 
         const isDefault = await this.askDefault();
-        console.log(isDefault);
+        let config = {};
+        if (!isDefault) {
+            config = await this.askCustomize();
+        }
 
         // create the folders
         // copy template files
