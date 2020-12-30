@@ -3,7 +3,8 @@ import inquirer from 'inquirer';
 import { CommandType } from '../types/CommandType';
 import path from 'path';
 import fs from 'fs';
-import { FileSystem } from '../../util/template';
+import { FileSystem, Template } from '../../util/template';
+import { ProjectGen } from '../../util/projectGenHelper';
 
 
 // const InitCommand = program.command('init <operation> [filepath]')
@@ -70,14 +71,23 @@ export default class InitCommand implements BaseCommand {
         }
 
         const isDefault = await this.askDefault();
-        let config = {};
+        let config: any = {
+            typescript: true,
+            backend: 'koa',
+            db: 'mysql2'
+        };
         if (!isDefault) {
             config = await this.askCustomize();
         }
 
+        config.projcetRoot = fullPath;
+
+        ProjectGen.Instance.createPackage(config);
+        ProjectGen.Instance.installPackage(fullPath);
+
         // create the folders
         // copy template files
-        
+
     }
 }
 

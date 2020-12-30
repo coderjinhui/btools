@@ -24,12 +24,17 @@ export class FileSystem {
 }
 
 export class Template {
-    static copy(fileName: string, distFolder: string, options?: object) {
+    static copy(fileName: string, distFolder: string, options?: any) {
+        const compiled = this.getTemplate(fileName, options);
+        const folder = distFolder;
+        FileSystem.mkdir(folder);
+        fs.writeFileSync(path.join(folder, options?.__targetFile), compiled)
+    }
+
+    static getTemplate(fileName: string, options?: any) {
         const file = path.join(template_folder, fileName);
         const content = fs.readFileSync(file, 'utf-8');
         const compiled = template(content)(options);
-        const folder = path.join(root, distFolder);
-        FileSystem.mkdir(folder);
-        fs.writeFileSync(path.join(folder, fileName), compiled)
+        return compiled;
     }
 }
