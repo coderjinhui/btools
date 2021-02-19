@@ -84,7 +84,7 @@ export default class InitCommand implements BaseCommand {
 
         ProjectGen.Instance.createPackage(config);
         ProjectGen.Instance.installPackage(fullPath);
-        ProjectGen.Instance.createORMDB(fullPath, config.db)
+        ProjectGen.Instance.createORMDB(fullPath, config.db);
 
         // create the folders
         // copy template files

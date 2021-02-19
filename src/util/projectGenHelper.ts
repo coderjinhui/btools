@@ -2,6 +2,7 @@ import path from "path";
 import fs from "fs";
 import { execSync } from "child_process";
 import { BasePackages } from "../templates/base";
+import cpy from 'cpy';
 
 import { Template } from "./template";
 
@@ -56,4 +57,9 @@ export class ProjectGen {
             cwd: projectRoot
         });
     }
+
+    async createTemplateFolder(projectRoot: string) {
+        await Template.copyFolder('src/template/srcKoa', path.join(projectRoot, 'src'));
+    }
+
 }

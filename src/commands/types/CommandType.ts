@@ -6,6 +6,22 @@ export namespace CommandType {
             value: 'mysql'
         },
         {
+            name: 'PostgreSQL',
+            value: 'postgres'
+        },
+        {
+            name: 'Microsoft SQL Server',
+            value: 'mssql'
+        },
+        {
+            name: 'Oracle',
+            value: 'oracle'
+        },
+        {
+            name: 'MongoDB',
+            value: 'mongodb'
+        },
+        {
             name: 'MariaDB',
             value: 'mariadb'
         },
@@ -18,29 +34,13 @@ export namespace CommandType {
             value: 'better-sqlite3'
         },
         {
-            name: 'PostgreSQL',
-            value: 'postgres'
-        },
-        {
             name: 'CockroachDB',
             value: 'cockroachdb'
-        },
-        {
-            name: 'Microsoft SQL Server',
-            value: 'mssql'
         },
         {
             name: 'sql.js',
             value: 'sql.js'
         },
-        {
-            name: 'Oracle',
-            value: 'oracle'
-        },
-        {
-            name: 'MongoDB',
-            value: 'mongodb'
-        }
     ]
 
     // backend framework types
@@ -53,6 +53,10 @@ export namespace CommandType {
             name: 'Express',
             value: 'express',
             disabled: true
+        },
+        {
+            name: 'Node',
+            value: 'none'
         }
     ]
 
