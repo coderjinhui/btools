@@ -49,4 +49,11 @@ export class ProjectGen {
             cwd: projectRoot
         });
     }
+
+    createORMDB(projectRoot: string, dbtype: string) {
+        execSync(`npx typeorm init --database ${dbtype}`, {
+            stdio: "inherit",
+            cwd: projectRoot
+        });
+    }
 }

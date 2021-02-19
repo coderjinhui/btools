@@ -74,7 +74,7 @@ export default class InitCommand implements BaseCommand {
         let config: any = {
             typescript: true,
             backend: 'koa',
-            db: 'mysql2'
+            db: 'mysql'
         };
         if (!isDefault) {
             config = await this.askCustomize();
@@ -84,6 +84,7 @@ export default class InitCommand implements BaseCommand {
 
         ProjectGen.Instance.createPackage(config);
         ProjectGen.Instance.installPackage(fullPath);
+        ProjectGen.Instance.createORMDB(fullPath, config.db)
 
         // create the folders
         // copy template files

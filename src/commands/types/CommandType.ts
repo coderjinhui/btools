@@ -2,16 +2,28 @@ export namespace CommandType {
     // database types
     export const DBTypes = [
         {
-            name: 'MySQL / MariaDB',
-            value: 'mysql2'
+            name: 'MySQL',
+            value: 'mysql'
         },
         {
-            name: 'PostgreSQL / CockroachDB',
-            value: 'pg'
+            name: 'MariaDB',
+            value: 'mariadb'
         },
         {
             name: 'SQLite',
-            value: 'sqlite3'
+            value: 'sqlite'
+        },
+        {
+            name: 'SQLite3',
+            value: 'better-sqlite3'
+        },
+        {
+            name: 'PostgreSQL',
+            value: 'postgres'
+        },
+        {
+            name: 'CockroachDB',
+            value: 'cockroachdb'
         },
         {
             name: 'Microsoft SQL Server',
@@ -23,7 +35,7 @@ export namespace CommandType {
         },
         {
             name: 'Oracle',
-            value: 'oracledb'
+            value: 'oracle'
         },
         {
             name: 'MongoDB',
