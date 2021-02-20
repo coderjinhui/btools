@@ -2,7 +2,6 @@ import path from "path";
 import fs from "fs";
 import { execSync } from "child_process";
 import { BasePackages } from "../templates/base";
-import cpy from 'cpy';
 
 import { Template } from "./template";
 
@@ -56,10 +55,19 @@ export class ProjectGen {
             stdio: "inherit",
             cwd: projectRoot
         });
-    }
+        const configPath = path.join(projectRoot, 'ormconfig.json');
+        const config = require(configPath);
+        
+        config.cli = {
+            entitiesDir: 'src/db/entity',
+            migrationsDir: 'src/db/migration',
+            subscribersDir: 'src/db/subscriber'
+        }
+        config.entities[0] = path.join(config.cli.entitiesDir, '**/*.ts');
+        config.migrations[0] = path.join(config.cli.migrationsDir, '**/*.ts');
+        config.subscribers[0] = path.join(config.cli.subscribersDir, '**/*.ts');
 
-    async createTemplateFolder(projectRoot: string) {
-        await Template.copyFolder('src/template/srcKoa', path.join(projectRoot, 'src'));
+        fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
     }
 
 }

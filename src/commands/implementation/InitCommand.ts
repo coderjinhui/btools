@@ -86,6 +86,9 @@ export default class InitCommand implements BaseCommand {
         ProjectGen.Instance.installPackage(fullPath);
         ProjectGen.Instance.createORMDB(fullPath, config.db);
 
+        FileSystem.rmdir(path.join(fullPath, 'src'));
+        Template.copyFolder('dist/templates/srcKoa/**/*.!(png)', path.join(fullPath, 'src'));
+
         // create the folders
         // copy template files
 

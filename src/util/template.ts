@@ -1,7 +1,9 @@
 import template from 'lodash.template';
 import fs from 'fs';
 import path from 'path';
-import cpy from 'cpy';
+import { execSync } from 'child_process';
+import rimraf from 'rimraf';
+import cpx from 'cpx';
 
 const root = path.join(__dirname, '../../');
 const template_folder = path.join(__dirname, '../templates');
@@ -24,19 +26,7 @@ export class FileSystem {
     }
 
     static rmdir(dir: string) {
-        var files = [];
-        if( fs.existsSync(dir) ) {
-            files = fs.readdirSync(dir);
-            files.forEach((file,index) => {
-                var curPath = dir + "/" + file;
-                if(fs.statSync(curPath).isDirectory()) { // recurse
-                    this.rmdir(curPath);
-                } else { // delete file
-                    fs.unlinkSync(curPath);
-                }
-            });
-            fs.rmdirSync(dir);
-        }
+        rimraf.sync(dir);
     }
 }
 
@@ -59,10 +49,9 @@ export class Template {
 
     static async copyFolder(source: string, dest: string) {
         const src = path.join(root, source);
-        await cpy(`${src}/**/*`, dest);
+        cpx.copySync(src, dest, {
+            includeEmptyDirs: true
+        });
         console.log('Generate src folder successful!');
     }
 }
-
-
-FileSystem.rmdir('./a')
