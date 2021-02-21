@@ -6,9 +6,7 @@ const userRouter = new Router();
 
 userRouter.get('/', async (ctx) => {
     const connection = await DBManager.Instance.getConnection();
-    const results = await connection.getRepository(User).find({where: {
-        firstName: 'test'
-    }})
+    const results = await connection.getRepository(User).find();
     ctx.body = results;
 })
 

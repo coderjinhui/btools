@@ -88,6 +88,7 @@ export default class InitCommand implements BaseCommand {
 
         FileSystem.rmdir(path.join(fullPath, 'src'));
         Template.copyFolder('dist/templates/srcKoa/**/*.!(png)', path.join(fullPath, 'src'));
+        ProjectGen.Instance.installPackage(fullPath);
 
         // create the folders
         // copy template files

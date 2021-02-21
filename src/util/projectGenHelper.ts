@@ -44,10 +44,17 @@ export class ProjectGen {
     }
 
     installPackage(projectRoot: string) {
-        execSync(`npm install`, {
-            stdio: "inherit",
-            cwd: projectRoot
-        });
+        try {
+            execSync(`yarn install`, {
+                stdio: "inherit",
+                cwd: projectRoot
+            });
+        } catch {
+            execSync(`npm install`, {
+                stdio: "inherit",
+                cwd: projectRoot
+            });
+        }
     }
 
     createORMDB(projectRoot: string, dbtype: string) {
