@@ -30,5 +30,14 @@ export const BasePackages = {
         type: {
             "@types/node": "^14.14.8",
         }
+    },
+    express: {
+        packages: {
+            "express": "^4.17.1",
+            "body-parser": "^1.19.0",
+        },
+        type: {
+            "@types/express": "^4.17.11",
+        }
     }
 }

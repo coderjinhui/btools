@@ -1,6 +1,6 @@
 import Router = require('koa-router');
 import DBManager from '../../db';
-import { User } from '../../db/entity/User.entity';
+import { User } from '../../db/entity/User';
 
 const userRouter = new Router();
 

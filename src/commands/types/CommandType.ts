@@ -52,7 +52,7 @@ export namespace CommandType {
         {
             name: 'Express',
             value: 'express',
-            disabled: true
+            // disabled: true
         },
         {
             name: 'Node',
