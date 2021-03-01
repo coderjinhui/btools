@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { execSync } from "child_process";
-import { BasePackages } from "../templates/base";
+import { BasePackages } from "./base";
 
 import { Template } from "./template";
 
@@ -45,7 +45,7 @@ export class ProjectGen {
         switch (options.db) {
             case "mysql":
             case "mariadb":
-                pkg.dependencies["mysql"] = "^2.14.1";
+                pkg.dependencies["mysql2"] = "^2.2.5";
                 break;
             case "postgres":
             case "cockroachdb":
@@ -79,8 +79,8 @@ export class ProjectGen {
                     type: "mysql",
                     host: "localhost",
                     port: 3306,
-                    username: "test",
-                    password: "test",
+                    username: "root",
+                    password: "root",
                     database: "test",
                 });
                 break;
@@ -89,8 +89,8 @@ export class ProjectGen {
                     type: "mariadb",
                     host: "localhost",
                     port: 3306,
-                    username: "test",
-                    password: "test",
+                    username: "root",
+                    password: "root",
                     database: "test",
                 });
                 break;
@@ -111,9 +111,9 @@ export class ProjectGen {
                     "type": "postgres",
                     "host": "localhost",
                     "port": 5432,
-                    "username": "test",
-                    "password": "test",
-                    "database": "test",
+                    "username": "postgres",
+                    "password": "postgres",
+                    "database": "postgres",
                 });
                 break;
             case "cockroachdb":

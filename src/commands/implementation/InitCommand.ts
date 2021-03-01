@@ -86,10 +86,17 @@ export default class InitCommand implements BaseCommand {
         ProjectGen.Instance.createORMConfig(fullPath, config.db);
         ProjectGen.Instance.copySrc(fullPath, config.backend);
         // copy git ignore
+        Template.copy("static/gitignore", fullPath, {
+            __targetFile: ".gitignore"
+        })
         // copy readme
+        Template.copy("static/readme", fullPath, {
+            __targetFile: "README.md"
+        })
         // create migration folder(src/db/migration)
+        FileSystem.mkdir(path.join(fullPath, "src/db/migration"))
         // create subscriber folder 
-
+        FileSystem.mkdir(path.join(fullPath, "src/db/subscriber"))
 
         // FileSystem.rmdir(path.join(fullPath, 'src'));
         // Template.copyFolder('dist/templates/srcKoa/**/*.!(png)', path.join(fullPath, 'src'));
