@@ -68,6 +68,10 @@ export class ProjectGen {
                 break;
         }
 
+        pkg.scripts["build"] = "tsc";
+        pkg.scripts["start"] = "node ./dist/index.js";
+        pkg.scripts["dev"] = "npm run build && npm start";
+
         fs.writeFileSync(path.join(projcetRoot, "package.json"), JSON.stringify(pkg, null, 2));
     }
 
