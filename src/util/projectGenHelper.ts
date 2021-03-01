@@ -160,13 +160,13 @@ export class ProjectGen {
             synchronize: true,
             logging: false,
             entities: [
-                "src/db/entity/**/*.ts"
+                "dist/db/entity/**/*.js",
             ],
             migrations: [
-                "src/db/migration/**/*.ts"
+                "dist/db/migration/**/*.js"
             ],
             subscribers: [
-                "src/db/subscriber/**/*.ts"
+                "dist/db/subscriber/**/*.js"
             ],
             cli: {
                 entitiesDir: "src/db/entity",
